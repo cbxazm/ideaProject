@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE validators PUBLIC
+        "-//Apache Struts//XWork Validator 1.0.3//EN"
+        "http://struts.apache.org/dtds/xwork-validator-1.0.3.dtd">
+<!--验证类型-->
+<!--<validator name="required" class="com.opensymphony.xwork2.validator.validators.RequiredFieldValidator"/>-->
+<!--<validator name="requiredstring" class="com.opensymphony.xwork2.validator.validators.RequiredStringValidator"/>-->
+<!--<validator name="int" class="com.opensymphony.xwork2.validator.validators.IntRangeFieldValidator"/>-->
+<!--<validator name="long" class="com.opensymphony.xwork2.validator.validators.LongRangeFieldValidator"/>-->
+<!--<validator name="short" class="com.opensymphony.xwork2.validator.validators.ShortRangeFieldValidator"/>-->
+<!--<validator name="double" class="com.opensymphony.xwork2.validator.validators.DoubleRangeFieldValidator"/>-->
+<!--<validator name="date" class="com.opensymphony.xwork2.validator.validators.DateRangeFieldValidator"/>-->
+<!--<validator name="expression" class="com.opensymphony.xwork2.validator.validators.ExpressionValidator"/>-->
+<!--<validator name="fieldexpression" class="com.opensymphony.xwork2.validator.validators.FieldExpressionValidator"/>-->
+<!--<validator name="email" class="com.opensymphony.xwork2.validator.validators.EmailValidator"/>-->
+<!--<validator name="url" class="com.opensymphony.xwork2.validator.validators.URLValidator"/>-->
+<!--<validator name="visitor" class="com.opensymphony.xwork2.validator.validators.VisitorFieldValidator"/>-->
+<!--<validator name="conversion" class="com.opensymphony.xwork2.validator.validators.ConversionErrorFieldValidator"/>-->
+<!--<validator name="stringlength" class="com.opensymphony.xwork2.validator.validators.StringLengthFieldValidator"/>-->
+<!--<validator name="regex" class="com.opensymphony.xwork2.validator.validators.RegexFieldValidator"/>-->
+<!--<validator name="conditionalvisitor" class="com.opensymphony.xwork2.validator.validators.ConditionalVisitorFieldValidator"/>-->
+<validators>
+    <!--private String username;//不为空，去空字符串-->
+    <!--private int age;//18-100-->
+    <!--private String email;//正确的邮箱格式-->
+    <!--private String password;//3-8-->
+    <!--private String repassword;-->
+    <!--private String score;//自然数-->
+    <!--private String url;//必须是一个路径http://-->
+    <!--private String gender;//男或者女-->
+    <validator type="requiredstring">
+        <!--requiredString 可以去除空字符 required不可以-->
+        <param name="fieldName">username</param>
+        <message>用户名不能为空</message>
+    </validator>
+    <!--表单的类型会根据模型的属性去校验-->
+    <validator type="int">
+        <param name="fieldName">age</param>
+        <param name="min">18</param>
+        <param name="max">100</param>
+        <message>请输入正确的年龄</message>
+    </validator>
+    <!--验证邮箱格式-->
+     <validator type="email">
+         <param name="fieldName">email</param>
+         <message>请输入正确的email格式</message>
+     </validator>
+    <validator type="requiredstring">
+        <param name="fieldName">email</param>
+        <message>邮箱不能为空</message>
+    </validator>
+    <!--验证密码-->
+      <!--<validator type="requiredstring">-->
+          <!--<param name="fieldName">password</param>-->
+          <!--<message>密码不能为空</message>-->
+      <!--</validator>-->
+    <!--下面规定了长度要求，上面无需再写-->
+          <validator type="stringlength">
+              <param name="fieldName">password</param>
+              <param name="minLength">3</param>
+              <param name="maxLength">8</param>
+              <message>密码长度为3-8位</message>
+          </validator>
+    <!--再次确认密码-->
+           <validator type="expression">
+               <param name="expression">
+                   <![CDATA[password == repassword]]>
+               </param>
+
+               <message>密码输入不一致</message>
+           </validator>
+    <!--验证分数-->
+    <!--<validator type="regex">-->
+        <!--&lt;!&ndash;regex代表正则表达式&ndash;&gt;-->
+        <!--<param name="fieldName">score</param>-->
+        <!--<param name="regex">-->
+
+        <!--</param>-->
+        <!--<message></message>-->
+    <!--</validator>-->
+   <!--验证个人主页，必须是路径http://-->
+               <validator type="url">
+                   <param name="fieldName">url</param>
+                   <message>url的格式不正确,必须以http://开头</message>
+               </validator>
+    <!--验证性别-->
+    <validator type="required">
+        <param name="fieldName">gender</param>
+        <message>性别必须填写</message>
+    </validator>
+</validators>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd">
+  <!--配置spring的ioc，把service对象配置进来-->
+    <bean id="accountService" class="com.cbx.Service.Impl.AccountServiceImpl"></bean>
+    <!--配置logger类-->
+    <bean id="logger" class="com.cbx.utils.Logger"></bean>
+       <!--配置AOP-->
+    <aop:config>
+        <aop:pointcut id="pt1" expression="execution(* *..*.*(..))"></aop:pointcut>
+        <!--配置切面-->
+         <aop:aspect id="logAdvice" ref="logger">
+             <!--&lt;!&ndash;配置通知类型，并且建立通知方法和切入点方法的关联&ndash;&gt;-->
+             <!--&lt;!&ndash;前置通知，在切入点方法执行之前执行&ndash;&gt;-->
+             <!--<aop:before method="beforePrintLog" pointcut-ref="pt1"></aop:before>-->
+             <!--&lt;!&ndash;后置，在切入点方法正常执行后执行&ndash;&gt;-->
+             <!--<aop:after-returning method="afterReturningPrintLog" pointcut-ref="pt1"></aop:after-returning>-->
+             <!--&lt;!&ndash;异常,在切入点方法执行产生异常后执行&ndash;&gt;-->
+             <!--<aop:after-throwing method="afterThrowingPrintLog" pointcut-ref="pt1" ></aop:after-throwing>-->
+             <!--&lt;!&ndash;最终,无论切入点方法是否正常执行，都会在他后面执行&ndash;&gt;-->
+             <!--<aop:after method="afterPrintLog" pointcut-ref="pt1"></aop:after>-->
+             <!--&lt;!&ndash;可以配置切入点表达式来简化 <aop:before method="beforePrintLog" pointcut="execution(* *..*.*(..))"></aop:before>&ndash;&gt;-->
+             <!--&lt;!&ndash;id属性用于指定表达式的唯一标识，expression属性表示表达式的内容"-->
+                 <!--此标签写在aop:aspect标签内部只能当前切面使用。-->
+                 <!--它还可以写在aop:aspect外面，所有切面可以使用（！！！注意如果放在外面，必须放在aspect标签之前）-->
+             <!--&ndash;&gt;-->
+             <!--<aop:pointcut id="pt1" expression="execution(* *..*.*(..))"></aop:pointcut>-->
+             <!--配置环绕通知-->
+             <aop:around method="aroundPrintLog" pointcut-ref="pt1"></aop:around>
+         </aop:aspect>
+    </aop:config>
+</beans>

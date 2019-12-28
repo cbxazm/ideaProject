@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!-- 配置properties
+       可以在标签内部配置连接数据库的信息。也可以通过属性引用外部配置文件信息
+       resource属性： 常用的
+           用于指定配置文件的位置，是按照类路径的写法来写，并且必须存在于类路径下。
+       url属性：
+           是要求按照Url的写法来写地址
+           URL：Uniform Resource Locator 统一资源定位符。它是可以唯一标识一个资源的位置。
+           它的写法：
+               http://localhost:8080/mybatisserver/demo1Servlet
+               协议      主机     端口       URI
+           //也可以搞file协议，就是电脑本地的资源
+           D:\学习\mybatis\mybatis_day02\代码\day02_eesy_01mybatisCRUD\src\main\resources\SqlMapConfig.xml 放在浏览器
+           file:///D:/学习/mybatis/mybatis_day02/代码/day02_eesy_01mybatisCRUD/src/main/resources/SqlMapConfig.xml
+           URI:Uniform Resource Identifier 统一资源标识符。它是在应用中可以唯一定位一个资源的。
+   -->
+    <properties resource="jdbcConfig.properties">
+    </properties>
+    <!--配置环境，名字随意-->
+    <environments default="mysql">
+        <environment id="mysql">
+            <!--配置事务-->
+            <transactionManager type="JDBC"></transactionManager>
+            <!--配置连接池-->
+            <dataSource type="POOLED">
+                <property name="driver" value="${jdbc.driver}"></property>
+                <property name="url" value="${jdbc.url}"></property>
+                <property name="username" value="${jdbc.username}"></property>
+                <property name="password" value="${jdbc.password}"></property>
+            </dataSource>
+        </environment>
+    </environments>
+    <!--配置映射文件的位置-->
+    <mappers>
+        <mapper resource="com/cbx/dao/IUserMapper.xml"></mapper>
+    </mappers>
+</configuration>

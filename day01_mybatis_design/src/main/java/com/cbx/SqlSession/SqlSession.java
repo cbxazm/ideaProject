@@ -1,0 +1,17 @@
+package com.cbx.SqlSession;
+
+/**
+ * 自定义mybatis中的和数据库交互的核心类
+ * 它里面可以创建dao接口的代理对象
+ */
+public interface SqlSession {
+    /**
+     * 根据参数创建一个代理对象
+     * 参数时dao的接口的字节码
+     */
+    <T> T getMapper(Class<T> daoInterfaceClass);
+    /**
+     * 释放资源
+     */
+    void close();
+}

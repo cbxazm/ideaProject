@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/StrutsDemo3.iml" filepath="$PROJECT_DIR$/.idea/StrutsDemo3.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../StrutsDemo4/StrutsDemo4.iml" filepath="$PROJECT_DIR$/../StrutsDemo4/StrutsDemo4.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../StrutsDemo5/StrutsDemo5.iml" filepath="$PROJECT_DIR$/../StrutsDemo5/StrutsDemo5.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../StrutsDemo6/StrutsDemo6.iml" filepath="$PROJECT_DIR$/../StrutsDemo6/StrutsDemo6.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../StrutsDemo7/StrutsDemo7.iml" filepath="$PROJECT_DIR$/../StrutsDemo7/StrutsDemo7.iml" />
+    </modules>
+  </component>
+</project>

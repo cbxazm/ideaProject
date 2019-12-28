@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+<!--配置环境-->
+    <environments default="mysql">
+        <!--这个名字可以随便取，我们就把它称为mysql的配置环境-->
+        <environment id="mysql">
+            <!--配置事务类型-->
+            <transactionManager type="JDBC"></transactionManager>
+                        <!--配置数据库连接池-->
+            <dataSource type="POOLED">
+                  <!--配置连接的四个基本信息-->
+                <property name="driver" value="com.mysql.jdbc.Driver"></property>
+                <property name="url" value="jdbc:mysql://localhost:3306/mybatis"></property>
+                <property name="username" value="root"></property>
+                <property name="password" value="123"></property>
+            </dataSource>
+        </environment>
+    </environments>
+    <!--指定映射配置文件的位置，映射配置文件指的是每个dao独立的配置文件-->
+   <mappers>
+       <mapper resource="com/cbx/Dao/IUserMapper.xml"></mapper>
+   </mappers>
+</configuration>

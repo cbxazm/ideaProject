@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+    <!--包名是唯一的-->
+    <!--<package name="p1" extends="struts-default">-->
+        <!--action  name相当于servlet的映射路径
+            method:处理请求的方法
+        class处理请求的类(相当于一个servlet类)
+        result：写返回的jsp页面
+        -->
+        <!--<action name="hello" class="cc.Demo1" method="sayHello">-->
+            <!--<result name="success">/success.jsp</result>-->
+        <!--</action>-->
+        <!--<action name="aa" class="cc.Demo2">-->
+            <!--<result name="success">/success.jsp</result>-->
+        <!--</action>-->
+    <!--</package>-->
+<!--<package name="p2" extends="struts-default">-->
+         <!--<action name="bb" class="cc.Demo3">-->
+             <!--<result name="success">/success.jsp</result>-->
+         <!--</action>-->
+         <!--<action name="p3">-->
+             <!--<result name="success">/success.jsp</result>-->
+
+         <!--</action>-->
+        <!---->
+<!--</package>-->
+
+       <!--<constant name="struts.devMode" value="true"></constant>-->
+       <!--<package name="p1" extends="struts-default">-->
+           <!--<action name="add" class="cc.UserAction" method="add">-->
+               <!--&lt;!&ndash;result里面的name不写默认就是success&ndash;&gt;-->
+               <!--<result name="success">/add.jsp</result>-->
+           <!--</action>-->
+           <!--<action name="delete" class="cc.UserAction" method="delete">-->
+               <!--<result name="success">/delete.jsp</result>-->
+           <!--</action>-->
+           <!--<action name="update" class="cc.UserAction" method="update">-->
+               <!--<result name="success">/update.jsp</result>-->
+           <!--</action>-->
+           <!--<action name="find" class="cc.UserAction" method="find">-->
+               <!--<result name="success">/find.jsp</result>-->
+
+           <!--</action>-->
+       <!--</package>-->
+      <!--动作访问之通配符-->
+    <!--一个*的通配符-->
+        <!--<package name="p1" extends="struts-default" namespace="/user">-->
+            <!--<action name="*" class="cc.UserAction" method="{1}">-->
+            <!--<result name="success">/{1}.jsp</result>-->
+            <!--</action>-->
+        <!--</package>-->
+    <!--&lt;!&ndash;两个*的通配符&ndash;&gt;-->
+    <!--&lt;!&ndash;需要在浏览器输入add_Student&ndash;&gt;-->
+    <!--<package name="p2" namespace="/student">-->
+        <!--&lt;!&ndash;<action name="addStudent" class="cc.StudentAction" method="addStudent">&ndash;&gt;-->
+            <!--&lt;!&ndash;<result name="success">/addStudent.jsp</result>&ndash;&gt;-->
+        <!--&lt;!&ndash;</action>&ndash;&gt;-->
+               <!--<action name="*_*" class="cc.StudentAction" method="{1}{2}">-->
+                   <!--<result name="{1}{2}"></result>-->
+               <!--</action>-->
+    <!--</package>-->
+    <!--<package name="p1" extends="struts-default" namespace="/n1">-->
+         <!--&lt;!&ndash;声明一个结果类型&ndash;&gt;-->
+        <!--<result-types>-->
+            <!--<result-type name="captca" class="cc.CAPTCHA"></result-type>-->
+        <!--</result-types>-->
+        <!--<action name="checkCode">-->
+            <!--<result type="captca">-->
+
+            <!--</result>-->
+        <!--</action>-->
+    <!--</package>-->
+    <package name="p1" extends="struts-default" namespace="/n1">
+        <action name="test" class="cc.TestAction" method="test"></action>
+        <action name="test2" class="cc.TestAction2" method="test"></action>
+
+    </package>
+</struts>

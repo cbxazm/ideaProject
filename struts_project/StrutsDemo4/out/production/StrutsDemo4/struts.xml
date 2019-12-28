@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+     <package name="p3" extends="struts-default">
+         <action name="login" class="cc.LoginAction" method="login">
+         </action>
+     </package>
+            <!--静态注入参数，不需要去访问表单了-->
+    <package name="p2" extends="struts-default">
+        <action name="login" class="cc.LoginAction" method="login">
+              <param name="username">王五</param>
+            <param name="password">123</param>
+        </action>
+    </package>
+</struts>

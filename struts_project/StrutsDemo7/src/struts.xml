@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+    <!--<package name="p1" extends="struts-default" namespace="/stu">-->
+        <!--<action name="add" class="Action.StudentAction" method="add">-->
+            <!--&lt;!&ndash;input回显&ndash;&gt;-->
+            <!--<result name="input">/add.jsp</result>-->
+        <!--</action>-->
+
+    <!--</package>-->
+    <!--开发者模式-->
+    <constant name="struts.devMode" value="true">
+
+    </constant>
+    <!--配置国际化-->
+    <!--这里配置的是全局的资源包，任何一个页面都是访问的这个-->
+    <constant name="struts.custom.i18n.resources" value="resources.message">
+
+    </constant>
+<package name="p1" extends="struts-default" namespace="n1">
+    <action name="login" class="web.action.UserAction" method="login">
+    </action>
+
+</package>
+</struts>

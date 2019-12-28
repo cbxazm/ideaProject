@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!--引入外部配置文件-->
+    <properties resource="jdbcConfig.properties"></properties>
+    <!--配置别名-->
+    <typeAliases>
+        <package name="com.cbx.domain"></package>
+    </typeAliases>
+    <!--配置环境-->
+    <environments default="mysql">
+        <environment id="mysql">
+            <transactionManager type="JDBC"></transactionManager>
+            <dataSource type="POOLED">
+                <property name="driver" value="${jdbc.driver}"></property>
+                <property name="url" value="${jdbc.url}"></property>
+                <property name="username" value="${jdbc.username}"></property>
+                <property name="password" value="${jdbc.password}"></property>
+            </dataSource>
+        </environment>
+    </environments>
+    <!--引入带有注解的dao接口的位置-->
+    <mappers>
+        <!--这样配有注解就用注解（class），有xml就用xml(resource)-->
+        <package name="com.cbx.dao"></package>
+    </mappers>
+</configuration>

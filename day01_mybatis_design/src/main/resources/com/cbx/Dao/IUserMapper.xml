@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mapper namespace="com.cbx.Dao.IUserDao">
+       <select id="findAll" resultType="com.cbx.domain.User">
+           SELECT  * from user
+       </select>
+</mapper>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace指定接口在那个dao里面-->
+<!--resultType指定我们要封装到哪里去-->
+ <mapper namespace="com.cbx.dao.IUserDao">
+    <select id="findAll" resultType="com.cbx.domain.User">
+        SELECT * from user
+    </select>
+       <!--保存用户-->
+    <insert id="saveUser" parameterType="com.cbx.domain.User">
+              <!-- 配置插入操作后，获取插入数据的id-->
+        <selectKey keyProperty="id" keyColumn="id" resultType="java.lang.Integer" order="AFTER">
+             <!-- keycolumn指的是数据库里的字段名,keyProperty指的是实体类里的user-->
+            SELECT  last_insert_id()
+        </selectKey>
+        INSERT INTO user (username,birthday,sex,address) VALUES (#{username},#{birthday},#{sex},#{address});
+    </insert>
+    <!--更新用户-->
+    <update id="updateUser">
+        UPDATE user set username=#{username},address=#{address},sex=#{sex},birthday=#{birthday} where id=#{id};
+    </update>
+    <!--删除用户-->
+    <delete id="deleteUser" parameterType="java.lang.Integer">
+        DELETE from user where id=#{uid}
+                   -- 因为此处只有一个参数，所以里面随便写啥，只是表示一个占位符
+    </delete>
+    <!--根据id查询用户-->
+    <select id="findById" resultType="com.cbx.domain.User" parameterType="java.lang.Integer">
+        select * from user where id=#{uid}
+    </select>
+    <!--根据名称模糊查询-->
+    <select id="findByName" parameterType="java.lang.String" resultType="com.cbx.domain.User">
+        SELECT * from user where username LIKE #{name}
+--         select * from user where username like '%${value}%' 这里是固定的写法，必须写成value，底层源码里就是这样
+    </select>
+    <!--获取用户的总记录条数-->
+    <select id="findTotal" resultType="java.lang.Integer">
+        SELECT count(id) from user;
+    </select>
+    <!--根据queryvo的条件来查询用户-->
+    <select id="findUserByVo" parameterType="com.cbx.domain.QueryVo" resultType="com.cbx.domain.User">
+        SELECT * from user where username like #{user.username}
+
+    </select>
+</mapper>
